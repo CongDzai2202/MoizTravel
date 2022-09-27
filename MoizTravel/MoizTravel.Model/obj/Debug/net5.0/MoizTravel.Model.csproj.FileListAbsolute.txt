@@ -1,0 +1,12 @@
+D:\MoizTravel\MoizTravel\MoizTravel.Model\bin\Debug\net5.0\MoizTravel.Model.deps.json
+D:\MoizTravel\MoizTravel\MoizTravel.Model\bin\Debug\net5.0\MoizTravel.Model.dll
+D:\MoizTravel\MoizTravel\MoizTravel.Model\bin\Debug\net5.0\ref\MoizTravel.Model.dll
+D:\MoizTravel\MoizTravel\MoizTravel.Model\bin\Debug\net5.0\MoizTravel.Model.pdb
+D:\MoizTravel\MoizTravel\MoizTravel.Model\obj\Debug\net5.0\MoizTravel.Model.csprojAssemblyReference.cache
+D:\MoizTravel\MoizTravel\MoizTravel.Model\obj\Debug\net5.0\MoizTravel.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\MoizTravel\MoizTravel\MoizTravel.Model\obj\Debug\net5.0\MoizTravel.Model.AssemblyInfoInputs.cache
+D:\MoizTravel\MoizTravel\MoizTravel.Model\obj\Debug\net5.0\MoizTravel.Model.AssemblyInfo.cs
+D:\MoizTravel\MoizTravel\MoizTravel.Model\obj\Debug\net5.0\MoizTravel.Model.csproj.CoreCompileInputs.cache
+D:\MoizTravel\MoizTravel\MoizTravel.Model\obj\Debug\net5.0\MoizTravel.Model.dll
+D:\MoizTravel\MoizTravel\MoizTravel.Model\obj\Debug\net5.0\ref\MoizTravel.Model.dll
+D:\MoizTravel\MoizTravel\MoizTravel.Model\obj\Debug\net5.0\MoizTravel.Model.pdb

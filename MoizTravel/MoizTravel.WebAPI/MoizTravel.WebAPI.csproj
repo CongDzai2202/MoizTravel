@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\MoizTravel.Model\MoizTravel.Model.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1856,6 +1856,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "MoizTravel.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/MoizTravel.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MoizTravel.Model.dll": {}
+        }
       }
     }
   },
@@ -6355,6 +6365,11 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "MoizTravel.Model/1.0.0": {
+      "type": "project",
+      "path": "../MoizTravel.Model/MoizTravel.Model.csproj",
+      "msbuildProject": "../MoizTravel.Model/MoizTravel.Model.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6365,6 +6380,7 @@
       "Microsoft.EntityFrameworkCore >= 5.0.17",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.17",
+      "MoizTravel.Model >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -6394,7 +6410,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\MoizTravel\\MoizTravel\\MoizTravel.Model\\MoizTravel.Model.csproj": {
+              "projectPath": "D:\\MoizTravel\\MoizTravel\\MoizTravel.Model\\MoizTravel.Model.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
