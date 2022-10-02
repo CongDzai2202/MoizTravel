@@ -21,4 +21,8 @@
     <ProjectReference Include="..\MoizTravel.Model\MoizTravel.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
+
 </Project>
