@@ -6385,20 +6385,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nguye\\.nuget\\packages\\": {}
+    "C:\\Users\\Novaon\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MoizTravel\\MoizTravel\\MoizTravel.WebAPI\\MoizTravel.WebAPI.csproj",
+      "projectUniqueName": "E:\\MoizTravel\\MoizTravel\\MoizTravel.WebAPI\\MoizTravel.WebAPI.csproj",
       "projectName": "MoizTravel.WebAPI",
-      "projectPath": "D:\\MoizTravel\\MoizTravel\\MoizTravel.WebAPI\\MoizTravel.WebAPI.csproj",
-      "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-      "outputPath": "D:\\MoizTravel\\MoizTravel\\MoizTravel.WebAPI\\obj\\",
+      "projectPath": "E:\\MoizTravel\\MoizTravel\\MoizTravel.WebAPI\\MoizTravel.WebAPI.csproj",
+      "packagesPath": "C:\\Users\\Novaon\\.nuget\\packages\\",
+      "outputPath": "E:\\MoizTravel\\MoizTravel\\MoizTravel.WebAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Novaon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -6411,8 +6416,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\MoizTravel\\MoizTravel\\MoizTravel.Model\\MoizTravel.Model.csproj": {
-              "projectPath": "D:\\MoizTravel\\MoizTravel\\MoizTravel.Model\\MoizTravel.Model.csproj"
+            "E:\\MoizTravel\\MoizTravel\\MoizTravel.Model\\MoizTravel.Model.csproj": {
+              "projectPath": "E:\\MoizTravel\\MoizTravel\\MoizTravel.Model\\MoizTravel.Model.csproj"
             }
           }
         }
@@ -6476,7 +6481,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
       }
     }
   }
