@@ -16,6 +16,8 @@ namespace MoizTravel.WebAPI.Configuration
             builder.HasKey(x => x.TourDetailId);
             builder.HasOne(x => x.Tour).WithMany(x => x.TourDetails).HasForeignKey(x => x.TourId);
             builder.HasOne(x => x.TourGuider).WithMany(x => x.TourDetails).HasForeignKey(x => x.TourGuiderId);
+            builder.HasOne(x => x.ImageTour).WithMany(x => x.TourDetails).HasForeignKey(x => x.ImageTourId);
+            builder.HasOne(x => x.Place).WithMany(x => x.TourDetails).HasForeignKey(x => x.PlaceId);
         }
     }
 }

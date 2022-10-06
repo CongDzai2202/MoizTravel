@@ -190,13 +190,31 @@ namespace MoizTravel.WebAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AirlineTicketsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("AirlineTicketsName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
 
                     b.Property<double>("PriceTickets")
                         .HasColumnType("float");
 
+                    b.Property<int>("TourDeltaiId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TourDetailId")
+                        .HasColumnType("int");
+
                     b.HasKey("AirlineTicketDetailId");
+
+                    b.HasIndex("AirlineTicketsId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("TourDetailId");
 
                     b.ToTable("AirlineTicketDetail");
                 });
@@ -331,6 +349,9 @@ namespace MoizTravel.WebAPI.Migrations
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ImageNewId")
+                        .HasColumnType("int");
+
                     b.Property<string>("PostDate")
                         .HasColumnType("nvarchar(max)");
 
@@ -341,6 +362,8 @@ namespace MoizTravel.WebAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("NewsId");
+
+                    b.HasIndex("ImageNewId");
 
                     b.ToTable("News");
                 });
@@ -417,6 +440,12 @@ namespace MoizTravel.WebAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ImageTourId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlaceId")
+                        .HasColumnType("int");
+
                     b.Property<double>("TotalAmount")
                         .HasColumnType("float");
 
@@ -430,6 +459,10 @@ namespace MoizTravel.WebAPI.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("TourDetailId");
+
+                    b.HasIndex("ImageTourId");
+
+                    b.HasIndex("PlaceId");
 
                     b.HasIndex("TourGuiderId");
 
@@ -468,6 +501,42 @@ namespace MoizTravel.WebAPI.Migrations
                     b.ToTable("TourGuider");
                 });
 
+            modelBuilder.Entity("MoizTravel.WebAPI.Entities.AirlineTicketDetail", b =>
+                {
+                    b.HasOne("MoizTravel.WebAPI.Entities.AirlineTickets", "AirlineTickets")
+                        .WithMany("AirlineTicketDetails")
+                        .HasForeignKey("AirlineTicketsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MoizTravel.WebAPI.Entities.ImformationCustomer", "ImformationCustomer")
+                        .WithMany("AirlineTicketDetails")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MoizTravel.WebAPI.Entities.TourDetail", "TourDetail")
+                        .WithMany("AirlineTicketDetails")
+                        .HasForeignKey("TourDetailId");
+
+                    b.Navigation("AirlineTickets");
+
+                    b.Navigation("ImformationCustomer");
+
+                    b.Navigation("TourDetail");
+                });
+
+            modelBuilder.Entity("MoizTravel.WebAPI.Entities.News", b =>
+                {
+                    b.HasOne("MoizTravel.WebAPI.Entities.ImageNews", "ImageNews")
+                        .WithMany("News")
+                        .HasForeignKey("ImageNewId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ImageNews");
+                });
+
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.Tour", b =>
                 {
                     b.HasOne("MoizTravel.WebAPI.Entities.ImformationCustomer", "ImformationCustomer")
@@ -481,6 +550,18 @@ namespace MoizTravel.WebAPI.Migrations
 
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.TourDetail", b =>
                 {
+                    b.HasOne("MoizTravel.WebAPI.Entities.ImageTour", "ImageTour")
+                        .WithMany("TourDetails")
+                        .HasForeignKey("ImageTourId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MoizTravel.WebAPI.Entities.Place", "Place")
+                        .WithMany("TourDetails")
+                        .HasForeignKey("PlaceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("MoizTravel.WebAPI.Entities.TourGuider", "TourGuider")
                         .WithMany("TourDetails")
                         .HasForeignKey("TourGuiderId")
@@ -493,19 +574,50 @@ namespace MoizTravel.WebAPI.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("ImageTour");
+
+                    b.Navigation("Place");
+
                     b.Navigation("Tour");
 
                     b.Navigation("TourGuider");
                 });
 
+            modelBuilder.Entity("MoizTravel.WebAPI.Entities.AirlineTickets", b =>
+                {
+                    b.Navigation("AirlineTicketDetails");
+                });
+
+            modelBuilder.Entity("MoizTravel.WebAPI.Entities.ImageNews", b =>
+                {
+                    b.Navigation("News");
+                });
+
+            modelBuilder.Entity("MoizTravel.WebAPI.Entities.ImageTour", b =>
+                {
+                    b.Navigation("TourDetails");
+                });
+
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.ImformationCustomer", b =>
                 {
+                    b.Navigation("AirlineTicketDetails");
+
                     b.Navigation("Tours");
+                });
+
+            modelBuilder.Entity("MoizTravel.WebAPI.Entities.Place", b =>
+                {
+                    b.Navigation("TourDetails");
                 });
 
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.Tour", b =>
                 {
                     b.Navigation("TourDetails");
+                });
+
+            modelBuilder.Entity("MoizTravel.WebAPI.Entities.TourDetail", b =>
+                {
+                    b.Navigation("AirlineTicketDetails");
                 });
 
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.TourGuider", b =>

@@ -17,6 +17,7 @@ namespace MoizTravel.WebAPI.Entities
         public string FlightNumber { get; set; }
         public DateTime DateStart { get; set; }
         public Status Status { get; set; }
+        public List<AirlineTicketDetail> AirlineTicketDetails { get; set; }
 
     }
 }

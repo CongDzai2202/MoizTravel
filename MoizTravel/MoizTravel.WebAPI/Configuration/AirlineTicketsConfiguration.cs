@@ -14,6 +14,7 @@ namespace MoizTravel.WebAPI.Configuration
         {
             builder.ToTable("AirLineTickets");
             builder.HasKey(c => c.AirlineTicketsId);
+
         }
     }
 }
