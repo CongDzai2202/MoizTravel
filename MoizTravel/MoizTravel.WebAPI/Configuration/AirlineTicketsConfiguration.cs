@@ -8,12 +8,12 @@ using MoizTravel.WebAPI.Entities;
 
 namespace MoizTravel.WebAPI.Configuration
 {
-    public class DataTourConfiguration:IEntityTypeConfiguration<DataTour>
+    public class AirlineTicketsConfiguration : IEntityTypeConfiguration<AirlineTickets>
     {
-        public void Configure(EntityTypeBuilder<DataTour> builder)
+        public void Configure(EntityTypeBuilder<AirlineTickets> builder)
         {
-            builder.ToTable("DataTour");
-            builder.HasKey(x => x.DataTourId);
+            builder.ToTable("AirLineTickets");
+            builder.HasKey(c => c.AirlineTicketsId);
         }
     }
 }

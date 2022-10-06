@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MoizTravel.WebAPI.DbContext;
 
 namespace MoizTravel.WebAPI.Migrations
 {
     [DbContext(typeof(MoizTravelDbContext))]
-    partial class MoizTravelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221006082227_V5")]
+    partial class V5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

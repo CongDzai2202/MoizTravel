@@ -12,10 +12,14 @@ namespace MoizTravel.WebAPI.Entities
         public string TourName { get; set; }
         public string Address { get; set; }
         public string PlaceGo { get; set; }
+        public double Price { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
         public string StartLocation { get; set; }
         public string EndLocation { get; set; }
         public Status Status { get; set; }
+        public int CustomerId { get; set; }
+        public ImformationCustomer ImformationCustomer { get; set; }
+        public List<TourDetail> TourDetails { get; set; }
     }
 }

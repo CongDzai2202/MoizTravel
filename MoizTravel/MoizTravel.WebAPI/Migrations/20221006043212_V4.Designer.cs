@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MoizTravel.WebAPI.DbContext;
 
 namespace MoizTravel.WebAPI.Migrations
 {
     [DbContext(typeof(MoizTravelDbContext))]
-    partial class MoizTravelDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221006043212_V4")]
+    partial class V4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -423,15 +425,10 @@ namespace MoizTravel.WebAPI.Migrations
                     b.Property<string>("TourDetailName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TourGuiderId")
-                        .HasColumnType("int");
-
                     b.Property<int>("TourId")
                         .HasColumnType("int");
 
                     b.HasKey("TourDetailId");
-
-                    b.HasIndex("TourGuiderId");
 
                     b.HasIndex("TourId");
 
@@ -481,12 +478,6 @@ namespace MoizTravel.WebAPI.Migrations
 
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.TourDetail", b =>
                 {
-                    b.HasOne("MoizTravel.WebAPI.Entities.TourGuider", "TourGuider")
-                        .WithMany("TourDetails")
-                        .HasForeignKey("TourGuiderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MoizTravel.WebAPI.Entities.Tour", "Tour")
                         .WithMany("TourDetails")
                         .HasForeignKey("TourId")
@@ -494,8 +485,6 @@ namespace MoizTravel.WebAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("Tour");
-
-                    b.Navigation("TourGuider");
                 });
 
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.ImformationCustomer", b =>
@@ -504,11 +493,6 @@ namespace MoizTravel.WebAPI.Migrations
                 });
 
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.Tour", b =>
-                {
-                    b.Navigation("TourDetails");
-                });
-
-            modelBuilder.Entity("MoizTravel.WebAPI.Entities.TourGuider", b =>
                 {
                     b.Navigation("TourDetails");
                 });

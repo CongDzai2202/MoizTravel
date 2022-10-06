@@ -15,5 +15,6 @@ namespace MoizTravel.WebAPI.Entities
         public string PhoneNumber { get; set; }
         public string Image { get; set; }
         public Status Status { get; set; }
+        public List<TourDetail> TourDetails { get; set; }
     }
 }
