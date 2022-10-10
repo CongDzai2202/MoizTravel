@@ -11,10 +11,10 @@ namespace MoizTravel.WebAPI.Entities
         public int NewsId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public string PostDate { get; set; }
+        public DateTime PostDate { get; set; }
         public int ImageNewId { get; set; }
         public ImageNews ImageNews { get; set; }
-        public Status Status { get; set; }
+        public int Status { get; set; }
         
     }
 }
