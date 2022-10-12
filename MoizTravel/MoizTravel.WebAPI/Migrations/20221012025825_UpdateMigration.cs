@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MoizTravel.WebAPI.Migrations
 {
-    public partial class V1 : Migration
+    public partial class UpdateMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -123,22 +123,6 @@ namespace MoizTravel.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ImageTour",
-                columns: table => new
-                {
-                    ImageTourID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DateCreate = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Note = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Status = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ImageTour", x => x.ImageTourID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ImformationCustomer",
                 columns: table => new
                 {
@@ -157,21 +141,6 @@ namespace MoizTravel.WebAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ImformationCustomer", x => x.CustomerId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Place",
-                columns: table => new
-                {
-                    PlaceId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PlaceName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Discription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Status = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Place", x => x.PlaceId);
                 });
 
             migrationBuilder.CreateTable(
@@ -229,7 +198,7 @@ namespace MoizTravel.WebAPI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PostDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ImageNewId = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -280,26 +249,12 @@ namespace MoizTravel.WebAPI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TourId = table.Column<int>(type: "int", nullable: false),
                     TourGuiderId = table.Column<int>(type: "int", nullable: false),
-                    ImageTourId = table.Column<int>(type: "int", nullable: false),
-                    PlaceId = table.Column<int>(type: "int", nullable: false),
                     TourDetailName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TotalAmount = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TourDetails", x => x.TourDetailId);
-                    table.ForeignKey(
-                        name: "FK_TourDetails_ImageTour_ImageTourId",
-                        column: x => x.ImageTourId,
-                        principalTable: "ImageTour",
-                        principalColumn: "ImageTourID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TourDetails_Place_PlaceId",
-                        column: x => x.PlaceId,
-                        principalTable: "Place",
-                        principalColumn: "PlaceId",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TourDetails_Tour_TourId",
                         column: x => x.TourId,
@@ -350,6 +305,51 @@ namespace MoizTravel.WebAPI.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ImageTour",
+                columns: table => new
+                {
+                    ImageTourID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DateCreate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Note = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    TourDetailId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ImageTour", x => x.ImageTourID);
+                    table.ForeignKey(
+                        name: "FK_ImageTour_TourDetails_TourDetailId",
+                        column: x => x.TourDetailId,
+                        principalTable: "TourDetails",
+                        principalColumn: "TourDetailId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Place",
+                columns: table => new
+                {
+                    PlaceId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PlaceName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Discription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    TourDetailId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Place", x => x.PlaceId);
+                    table.ForeignKey(
+                        name: "FK_Place_TourDetails_TourDetailId",
+                        column: x => x.TourDetailId,
+                        principalTable: "TourDetails",
+                        principalColumn: "TourDetailId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AirlineTicketDetail_AirlineTicketsId",
                 table: "AirlineTicketDetail",
@@ -366,24 +366,24 @@ namespace MoizTravel.WebAPI.Migrations
                 column: "TourDetailId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ImageTour_TourDetailId",
+                table: "ImageTour",
+                column: "TourDetailId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_News_ImageNewId",
                 table: "News",
                 column: "ImageNewId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Place_TourDetailId",
+                table: "Place",
+                column: "TourDetailId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tour_CustomerId",
                 table: "Tour",
                 column: "CustomerId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TourDetails_ImageTourId",
-                table: "TourDetails",
-                column: "ImageTourId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TourDetails_PlaceId",
-                table: "TourDetails",
-                column: "PlaceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TourDetails_TourGuiderId",
@@ -417,7 +417,13 @@ namespace MoizTravel.WebAPI.Migrations
                 name: "AppUserTokens");
 
             migrationBuilder.DropTable(
+                name: "ImageTour");
+
+            migrationBuilder.DropTable(
                 name: "News");
+
+            migrationBuilder.DropTable(
+                name: "Place");
 
             migrationBuilder.DropTable(
                 name: "RoleClaims");
@@ -429,16 +435,10 @@ namespace MoizTravel.WebAPI.Migrations
                 name: "AirLineTickets");
 
             migrationBuilder.DropTable(
-                name: "TourDetails");
-
-            migrationBuilder.DropTable(
                 name: "ImageNews");
 
             migrationBuilder.DropTable(
-                name: "ImageTour");
-
-            migrationBuilder.DropTable(
-                name: "Place");
+                name: "TourDetails");
 
             migrationBuilder.DropTable(
                 name: "Tour");

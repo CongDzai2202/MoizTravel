@@ -10,8 +10,8 @@ using MoizTravel.WebAPI.DbContext;
 namespace MoizTravel.WebAPI.Migrations
 {
     [DbContext(typeof(MoizTravelDbContext))]
-    [Migration("20221006100418_V1")]
-    partial class V1
+    [Migration("20221012025825_UpdateMigration")]
+    partial class UpdateMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -294,10 +294,15 @@ namespace MoizTravel.WebAPI.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<int>("TourDetailId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Url")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ImageTourID");
+
+                    b.HasIndex("TourDetailId");
 
                     b.ToTable("ImageTour");
                 });
@@ -354,8 +359,8 @@ namespace MoizTravel.WebAPI.Migrations
                     b.Property<int>("ImageNewId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PostDate")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("PostDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -386,7 +391,12 @@ namespace MoizTravel.WebAPI.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<int>("TourDetailId")
+                        .HasColumnType("int");
+
                     b.HasKey("PlaceId");
+
+                    b.HasIndex("TourDetailId");
 
                     b.ToTable("Place");
                 });
@@ -442,12 +452,6 @@ namespace MoizTravel.WebAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ImageTourId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PlaceId")
-                        .HasColumnType("int");
-
                     b.Property<double>("TotalAmount")
                         .HasColumnType("float");
 
@@ -461,10 +465,6 @@ namespace MoizTravel.WebAPI.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("TourDetailId");
-
-                    b.HasIndex("ImageTourId");
-
-                    b.HasIndex("PlaceId");
 
                     b.HasIndex("TourGuiderId");
 
@@ -528,6 +528,17 @@ namespace MoizTravel.WebAPI.Migrations
                     b.Navigation("TourDetail");
                 });
 
+            modelBuilder.Entity("MoizTravel.WebAPI.Entities.ImageTour", b =>
+                {
+                    b.HasOne("MoizTravel.WebAPI.Entities.TourDetail", "TourDetail")
+                        .WithMany("ImageTours")
+                        .HasForeignKey("TourDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TourDetail");
+                });
+
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.News", b =>
                 {
                     b.HasOne("MoizTravel.WebAPI.Entities.ImageNews", "ImageNews")
@@ -537,6 +548,17 @@ namespace MoizTravel.WebAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("ImageNews");
+                });
+
+            modelBuilder.Entity("MoizTravel.WebAPI.Entities.Place", b =>
+                {
+                    b.HasOne("MoizTravel.WebAPI.Entities.TourDetail", "TourDetail")
+                        .WithMany("Places")
+                        .HasForeignKey("TourDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TourDetail");
                 });
 
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.Tour", b =>
@@ -552,18 +574,6 @@ namespace MoizTravel.WebAPI.Migrations
 
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.TourDetail", b =>
                 {
-                    b.HasOne("MoizTravel.WebAPI.Entities.ImageTour", "ImageTour")
-                        .WithMany("TourDetails")
-                        .HasForeignKey("ImageTourId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MoizTravel.WebAPI.Entities.Place", "Place")
-                        .WithMany("TourDetails")
-                        .HasForeignKey("PlaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MoizTravel.WebAPI.Entities.TourGuider", "TourGuider")
                         .WithMany("TourDetails")
                         .HasForeignKey("TourGuiderId")
@@ -575,10 +585,6 @@ namespace MoizTravel.WebAPI.Migrations
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("ImageTour");
-
-                    b.Navigation("Place");
 
                     b.Navigation("Tour");
 
@@ -595,21 +601,11 @@ namespace MoizTravel.WebAPI.Migrations
                     b.Navigation("News");
                 });
 
-            modelBuilder.Entity("MoizTravel.WebAPI.Entities.ImageTour", b =>
-                {
-                    b.Navigation("TourDetails");
-                });
-
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.ImformationCustomer", b =>
                 {
                     b.Navigation("AirlineTicketDetails");
 
                     b.Navigation("Tours");
-                });
-
-            modelBuilder.Entity("MoizTravel.WebAPI.Entities.Place", b =>
-                {
-                    b.Navigation("TourDetails");
                 });
 
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.Tour", b =>
@@ -620,6 +616,10 @@ namespace MoizTravel.WebAPI.Migrations
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.TourDetail", b =>
                 {
                     b.Navigation("AirlineTicketDetails");
+
+                    b.Navigation("ImageTours");
+
+                    b.Navigation("Places");
                 });
 
             modelBuilder.Entity("MoizTravel.WebAPI.Entities.TourGuider", b =>
