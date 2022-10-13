@@ -15,6 +15,7 @@ namespace MoizTravel.WebAPI.Configuration
         {
             builder.ToTable("ImageNews");
             builder.HasKey(x => x.ImageNewId);
+            builder.Property(c => c.ImageNewId).UseIdentityColumn();
         }
     }
 }

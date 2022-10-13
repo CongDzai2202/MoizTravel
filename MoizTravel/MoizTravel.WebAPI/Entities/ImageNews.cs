@@ -11,7 +11,7 @@ namespace MoizTravel.WebAPI.Entities
         public int ImageNewId { get; set; }
         public string Url { get; set; }
         public string Note { get; set; }
-        public Status Status { get; set; }
+        public int Status { get; set; }
         public List<News> News { get; set; }
 
     }

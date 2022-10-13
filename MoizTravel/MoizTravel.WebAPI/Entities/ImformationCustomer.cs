@@ -17,7 +17,7 @@ namespace MoizTravel.WebAPI.Entities
         public string CompanyName { get; set; }
         public string CompanyAddress { get; set; }
         public string CompanyTel { get; set; }
-        public Status Status { get; set; }
+        public int Status { get; set; }
         public List<Tour> Tours { get; set; }
         public List<AirlineTicketDetail> AirlineTicketDetails { get; set; }
 

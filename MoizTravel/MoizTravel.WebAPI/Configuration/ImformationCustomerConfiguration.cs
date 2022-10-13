@@ -15,6 +15,7 @@ namespace MoizTravel.WebAPI.Configuration
         {
             builder.ToTable("ImformationCustomer");
             builder.HasKey(x => x.CustomerId);
+            builder.Property(c => c.CustomerId).UseIdentityColumn();
 
         }
     }

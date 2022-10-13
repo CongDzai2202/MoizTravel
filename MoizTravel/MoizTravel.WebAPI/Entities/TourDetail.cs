@@ -17,5 +17,6 @@ namespace MoizTravel.WebAPI.Entities
         public double TotalAmount { get; set; }
         public List<ImageTour> ImageTours { get; set; }
         public List<Place> Places { get; set; }
+        public int Status { get; set; }
     }
 }

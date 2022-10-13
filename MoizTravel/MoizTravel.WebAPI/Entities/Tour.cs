@@ -17,7 +17,7 @@ namespace MoizTravel.WebAPI.Entities
         public DateTime DateEnd { get; set; }
         public string StartLocation { get; set; }
         public string EndLocation { get; set; }
-        public Status Status { get; set; }
+        public int Status { get; set; }
         public int CustomerId { get; set; }
         public ImformationCustomer ImformationCustomer { get; set; }
         public List<TourDetail> TourDetails { get; set; }

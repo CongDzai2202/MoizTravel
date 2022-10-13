@@ -14,6 +14,7 @@ namespace MoizTravel.WebAPI.Configuration
         {
             builder.ToTable("TourGuider");
             builder.HasKey(c => c.TourGuiderId);
+            builder.Property(c => c.TourGuiderId).UseIdentityColumn();
         }
     }
 }

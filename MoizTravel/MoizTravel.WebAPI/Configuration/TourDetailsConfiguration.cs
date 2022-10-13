@@ -14,6 +14,7 @@ namespace MoizTravel.WebAPI.Configuration
         {
             builder.ToTable("TourDetails");
             builder.HasKey(x => x.TourDetailId);
+            builder.Property(c => c.TourDetailId).UseIdentityColumn();
             builder.HasOne(x => x.Tour).WithMany(x => x.TourDetails).HasForeignKey(x => x.TourId);
             builder.HasOne(x => x.TourGuider).WithMany(x => x.TourDetails).HasForeignKey(x => x.TourGuiderId);
         }

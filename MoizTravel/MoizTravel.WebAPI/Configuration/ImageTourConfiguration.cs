@@ -15,6 +15,7 @@ namespace MoizTravel.WebAPI.Configuration
         {
             builder.ToTable("ImageTour");
             builder.HasKey(x => x.ImageTourID);
+            builder.Property(c => c.ImageTourID).UseIdentityColumn();
             builder.HasOne(x => x.TourDetail).WithMany(x => x.ImageTours).HasForeignKey(x => x.TourDetailId);
         }
     }

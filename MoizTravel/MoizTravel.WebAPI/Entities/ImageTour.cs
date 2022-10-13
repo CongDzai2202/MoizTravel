@@ -12,7 +12,7 @@ namespace MoizTravel.WebAPI.Entities
         public string DateCreate { get; set; }
         public string Url { get; set; }
         public string Note { get; set; }
-        public Status Status { get; set; }
+        public int Status { get; set; }
         public TourDetail TourDetail { get; set; }
         public int TourDetailId { get; set; }
     }
