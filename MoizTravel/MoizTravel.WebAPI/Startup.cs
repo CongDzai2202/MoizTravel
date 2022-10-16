@@ -69,6 +69,7 @@ namespace MoizTravel.WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MoizTravel.WebAPI", Version = "v1" });
             });
             services.AddTransient<INewRepository, NewRepository>();
+            services.AddTransient<IImageNewRepository, ImageNewRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
