@@ -13,6 +13,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MoizTravel.WebAPI.Authentication;
 using MoizTravel.WebAPI.DbContext;
+using MoizTravel.WebAPI.IRepositories;
+using MoizTravel.WebAPI.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,6 +68,7 @@ namespace MoizTravel.WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MoizTravel.WebAPI", Version = "v1" });
             });
+            services.AddTransient<INewRepository, NewRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
