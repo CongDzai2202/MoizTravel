@@ -16,7 +16,7 @@ namespace MoizTravel.WebAPI.Controllers
     public class NewController : ControllerBase
     {
         private INewRepository _new;
-        public NewController(NewRepository newRepository)
+        public NewController(INewRepository newRepository)
         {
             _new = newRepository;
         }

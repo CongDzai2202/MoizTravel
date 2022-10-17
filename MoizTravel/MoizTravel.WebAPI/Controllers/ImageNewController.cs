@@ -15,8 +15,8 @@ namespace MoizTravel.WebAPI.Controllers
     [ApiController]
     public class ImageNewController : ControllerBase
     {
-        private IImageNewRepository _imageNew;
-        public ImageNewController(ImageNewRepository imageNew)
+        private readonly IImageNewRepository _imageNew;
+        public ImageNewController(IImageNewRepository imageNew)
         {
             _imageNew = imageNew;
         }

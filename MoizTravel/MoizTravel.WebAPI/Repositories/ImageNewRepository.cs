@@ -20,8 +20,7 @@ namespace MoizTravel.WebAPI.Repositories
         {
             if (imageNew == null) return false;
             _context.imageNews.Add(new ImageNews()
-            {
-                ImageNewId=imageNew.ImageNewId,
+            {               
                 Url=imageNew.Url,
                 Note=imageNew.Note,
                 Status=imageNew.Status
