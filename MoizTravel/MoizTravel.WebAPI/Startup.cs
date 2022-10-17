@@ -72,6 +72,7 @@ namespace MoizTravel.WebAPI
             services.AddTransient<INewRepository, NewRepository>();
             services.AddTransient<IImageNewRepository, ImageNewRepository>();
             services.AddTransient<IAirlineTicketsRepository, AirlineTicketsRepository>();
+            services.AddTransient<IAirlineTicketsDetailRepository, AirlineTicketsDetailRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

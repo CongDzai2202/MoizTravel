@@ -21,6 +21,7 @@ namespace MoizTravel.WebAPI.Controllers
         {
             _airline = airlineTickets;
         }
+
         [HttpGet]
         public IActionResult GetList()
         {
@@ -46,6 +47,7 @@ namespace MoizTravel.WebAPI.Controllers
             var a = _airline.Create(newView);
             return CreatedAtAction(nameof(Create), a);
         }
+
         [HttpPut]
         public IActionResult Update(AirlineTicketsViewModel newView)
         {

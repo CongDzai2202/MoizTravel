@@ -15,7 +15,7 @@ namespace MoizTravel.WebAPI.Entities
         public int CustomerId { get; set; }
         public ImformationCustomer ImformationCustomer { get; set; }
         public string AirlineTicketsName { get; set; }
-        public double PriceTickets { get; set; }
+        public long PriceTickets { get; set; }
         public int Status { get; set; }
     }
 }
