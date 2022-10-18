@@ -2,10 +2,8 @@
 using MoizTravel.WebAPI.DbContext;
 using MoizTravel.WebAPI.Entities;
 using MoizTravel.WebAPI.IRepositories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MoizTravel.WebAPI.Repositories
 {
