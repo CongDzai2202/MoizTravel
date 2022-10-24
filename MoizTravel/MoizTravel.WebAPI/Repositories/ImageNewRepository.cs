@@ -23,7 +23,7 @@ namespace MoizTravel.WebAPI.Repositories
             {               
                 Url=imageNew.Url,
                 Note=imageNew.Note,
-                Status=imageNew.Status
+                Status=0
             });
             _context.SaveChanges();
             return true;
@@ -50,8 +50,7 @@ namespace MoizTravel.WebAPI.Repositories
             _context.imageNews.Update(new ImageNews()
             {               
                 Url = imageNew.Url,
-                Note = imageNew.Note,
-                Status = imageNew.Status
+                Note = imageNew.Note
             });
             _context.SaveChanges();
             return true;

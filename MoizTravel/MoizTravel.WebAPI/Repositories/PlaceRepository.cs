@@ -22,7 +22,7 @@ namespace MoizTravel.WebAPI.Repositories
                 PlaceName=placeView.PlaceName,
                 Discription=placeView.Discription,
                 TourDetailId=placeView.TourDetailId,
-                Status=placeView.Status
+                Status=0
             });
             _context.SaveChanges();
             return true;
@@ -57,8 +57,7 @@ namespace MoizTravel.WebAPI.Repositories
             {
                 PlaceName = placeView.PlaceName,
                 Discription = placeView.Discription,
-                TourDetailId = placeView.TourDetailId,
-                Status = placeView.Status
+                TourDetailId = placeView.TourDetailId
             });
             _context.SaveChanges();
             return true;

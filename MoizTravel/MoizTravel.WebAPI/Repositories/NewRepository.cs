@@ -23,7 +23,7 @@ namespace MoizTravel.WebAPI.Repositories
                 Content = newViewModel.Content,
                 PostDate=newViewModel.PostDate,
                 ImageNewId=newViewModel.ImageNewId,
-                Status=newViewModel.Status
+                Status=0
             });
             _context.SaveChanges();
             return true;
@@ -52,8 +52,7 @@ namespace MoizTravel.WebAPI.Repositories
                 Title = newViewModel.Title,
                 Content = newViewModel.Content,
                 PostDate = newViewModel.PostDate,
-                ImageNewId = newViewModel.ImageNewId,
-                Status = newViewModel.Status
+                ImageNewId = newViewModel.ImageNewId
             });
             _context.SaveChanges();
             return true;
