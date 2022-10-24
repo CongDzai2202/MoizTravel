@@ -119,5 +119,22 @@ namespace MoizTravel.WebAPI.Controllers
 
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
+        [HttpGet]
+        [Route("get-user")]
+        public async Task<IActionResult> GetUser()
+        {
+            var UserName = User.Identity.Name;
+            var user = await userManager.FindByNameAsync(UserName);
+            var userRoles = await userManager.GetRolesAsync(user);
+            return Ok(new { UserName, userRoles});
+        }
+        [HttpPut]
+        [Route("change-password")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordModel model)
+        {
+            var user = await userManager.FindByNameAsync(model.UserName);
+            await userManager.ChangePasswordAsync(user, model.oldPassWord, model.newPassWord);
+            return Ok();
+        }
     }
 }
