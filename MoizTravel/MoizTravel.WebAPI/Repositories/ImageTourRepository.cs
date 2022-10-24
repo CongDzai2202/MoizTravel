@@ -25,7 +25,7 @@ namespace MoizTravel.WebAPI.Repositories
                 Url=imageTour.Url,
                 Note=imageTour.Note,
                 TourDetailId=imageTour.TourDetailId,
-                Status=imageTour.Status
+                Status=0
             });
             return true;
         }
@@ -53,8 +53,7 @@ namespace MoizTravel.WebAPI.Repositories
                 DateCreate = imageTour.DateCreate,
                 Url = imageTour.Url,
                 Note = imageTour.Note,
-                TourDetailId = imageTour.TourDetailId,
-                Status = imageTour.Status
+                TourDetailId = imageTour.TourDetailId
             });
             return true;
         }

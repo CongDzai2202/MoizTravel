@@ -26,8 +26,7 @@ namespace MoizTravel.WebAPI.Repositories
                 Email = customerView.Email,
                 CompanyAddress = customerView.CompanyAddress,
                 CompanyName = customerView.CompanyName,
-                CompanyTel = customerView.CompanyTel,
-                Status = customerView.Status
+                CompanyTel = customerView.CompanyTel
             });
             _context.SaveChanges();
             return true;

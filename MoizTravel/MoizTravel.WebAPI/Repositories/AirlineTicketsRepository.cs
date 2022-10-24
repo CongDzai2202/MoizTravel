@@ -27,7 +27,7 @@ namespace MoizTravel.WebAPI.Repositories
                 NumberSeat=airlineTickets.NumberSeat,
                 FlightNumber=airlineTickets.FlightNumber,
                 DateStart=airlineTickets.DateStart,
-                Status=airlineTickets.Status
+                Status=0
             });
             _context.SaveChanges();
             return true;
@@ -59,8 +59,7 @@ namespace MoizTravel.WebAPI.Repositories
                 DepartureTime = airlineTickets.DepartureTime,
                 NumberSeat = airlineTickets.NumberSeat,
                 FlightNumber = airlineTickets.FlightNumber,
-                DateStart = airlineTickets.DateStart,
-                Status = airlineTickets.Status
+                DateStart = airlineTickets.DateStart                
             });
             _context.SaveChanges();
             return true;

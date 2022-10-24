@@ -28,7 +28,7 @@ namespace MoizTravel.WebAPI.Repositories
                 DateEnd = tourView.DateEnd,
                 StartLocation = tourView.StartLocation,
                 EndLocation = tourView.EndLocation,
-                Status = tourView.Status
+                Status = 0
             });
             _context.SaveChanges();
             return true;
@@ -73,8 +73,7 @@ namespace MoizTravel.WebAPI.Repositories
                 DateStart = tourView.DateStart,
                 DateEnd = tourView.DateEnd,
                 StartLocation = tourView.StartLocation,
-                EndLocation = tourView.EndLocation,
-                Status = tourView.Status
+                EndLocation = tourView.EndLocation
             });
             _context.SaveChanges();
             return true;
