@@ -7,36 +7,36 @@ namespace MoizTravel.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TourDetailController : ControllerBase
+    public class TourGuiderController : ControllerBase
     {
-        private ITourDetailRepository _tourDetail;
-        public TourDetailController(ITourDetailRepository tourDetail)
+        private ITourGuiderRepository _tourGuider;
+        public TourGuiderController(ITourGuiderRepository tourGuider)
         {
-            _tourDetail = tourDetail;
+            _tourGuider = tourGuider;
         }
         [HttpGet]
         public IActionResult GetList()
         {
-            List<TourDetailViewModel> lst = _tourDetail.GetList();
+            List<TourGuiderViewModel> lst = _tourGuider.GetList();
             return Ok(lst);
         }
         [HttpPost]
-        public IActionResult Create(TourDetailViewModel tourDetailView)
+        public IActionResult Create(TourGuiderViewModel tourGuiderView)
         {
-            var a = _tourDetail.Create(tourDetailView);
+            var a = _tourGuider.Create(tourGuiderView);
             return CreatedAtAction(nameof(Create), a);
         }
         [HttpPut]
-        public IActionResult Update(TourDetailViewModel tourDetailView)
+        public IActionResult Update(TourGuiderViewModel tourGuiderView)
         {
-            _tourDetail.Update(tourDetailView);
+            _tourGuider.Update(tourGuiderView);
             return Ok();
         }
         [HttpPut]
         [Route("{id}")]
         public IActionResult Delete(int id)
         {
-            _tourDetail.Delete(id);
+            _tourGuider.Delete(id);
             return Ok();
         }
     }
