@@ -124,7 +124,9 @@ namespace MoizTravel.WebAPI.Controllers
         public async Task<IActionResult> GetUser()
         {
             var UserName = User.Identity.Name;
+            if (UserName == null) return BadRequest(new Response { Status="Fail",Message= "No user name" });
             var user = await userManager.FindByNameAsync(UserName);
+            if (user == null) return BadRequest();
             var userRoles = await userManager.GetRolesAsync(user);
             return Ok(new { UserName, userRoles});
         }
