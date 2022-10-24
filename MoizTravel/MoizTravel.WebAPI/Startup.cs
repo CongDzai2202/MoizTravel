@@ -93,8 +93,8 @@ namespace MoizTravel.WebAPI
 
             app.UseRouting();
             app.UseCors("CorsPolicy");
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
