@@ -135,6 +135,11 @@ namespace MoizTravel.WebAPI.Controllers
         public async Task<IActionResult> ChangePassword(ChangePasswordModel model)
         {
             var user = await userManager.FindByNameAsync(model.UserName);
+            var checkPass = await userManager.CheckPasswordAsync(user, model.oldPassWord);
+            if (checkPass == false)
+            {
+                return BadRequest(new Response { Status = "Fail", Message = "The old password is not correct" });
+            }
             await userManager.ChangePasswordAsync(user, model.oldPassWord, model.newPassWord);
             return Ok();
         }
